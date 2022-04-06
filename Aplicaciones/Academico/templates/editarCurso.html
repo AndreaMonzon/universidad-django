@@ -1,0 +1,35 @@
+{% extends "./base.html" %}
+
+{% block title %} Gestion Cursos {% endblock %}
+{% block body %}
+<div class="row">
+    <div class=" col-md-4 mx-auto" >
+        <h2>Editar de curso</h2>
+        <div class="card "> 
+            <div class="card-body">
+                <form action="/edicionCurso/" method="POST">
+                    <!-- csrf es un tipo de exploint malicicoso en el cual un cliente(formulario web)
+                    no autorizado transmite datos al servidor -->
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtCodigo" name="txtCodigo" value="{{curso.codigo}}" class="form-control" placeholder="Codigo"
+                         minlength="6" maxlength="6" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtNombre" name="txtNombre"value="{{curso.nombre}}" class="form-control" placeholder="Nombre"
+                          maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="numCredito" name="numCredito" value="{{curso.creditos}}" class="form-control" 
+                         minlength="1" maxlength="9" value="1" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="Submit" class=" btn btn-sucess btn-block text-white">Guardar</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
